@@ -9,12 +9,26 @@ function searchRace() {
       return response.json();
     })
 
-    .then(function (response) {
-      console.log(response.results[0].name)
+    .then(function (race) {
+      console.log(race.results[0].name)
 
     });
 }
 searchRace()
+
+function searchClass() {
+  fetch('https://www.dnd5eapi.co/api/classes')
+
+    .then(function (response) {
+      return response.json();
+    })
+
+    .then(function (classes) {
+      console.log(classes.results[0].name)
+
+    });
+}
+searchClass()
 
 
 //when the generate character button is clicked it generates random information
