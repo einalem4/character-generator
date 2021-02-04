@@ -55,6 +55,12 @@ p {
     color: black;
 }
 
+.collapsible-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .collapsible-body {
     background-color: white;
 }
