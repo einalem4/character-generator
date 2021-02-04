@@ -1,5 +1,5 @@
 :root {
-    --navy-blue: rgb(0, 26, 61);
+    --dark-grey: rgb(37, 37, 38);
     --red: rgb(255, 83, 73);
 }
 
@@ -14,49 +14,53 @@ html {
 }
 
 body {
-    background-color: var(--navy-blue);
+    background-color: var(--dark-grey);
     color: white;
     font-family: montserrat, sans-serif;
+    overflow-x: hidden;
 }
 
+/* header section */
 main {
     width: 100vw;
-    height: 100vh;
-    background-image: url("../images/web-ready/hero-background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    height: 50vh;
 }
 
-#match {
-    color: var(--red);
-}
-
-h1 {
-    font-size: 3rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin: 0;
+.logo {
+    width: 100%;
 }
 
 p {
     font-size: 1.25rem;
 }
 
-#artist-search {
+#generate {
     width: 100%;
-    height: 50px;
-    border: none;
-    border-radius: 25px;
-    margin-top: 10px;
-    padding-left: 60px;
+    margin-top: 20px;
+    font-size: 800;
+}
+
+.btn-text {
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.character-results {
+    width: 100vw;
+}
+
+/* search results */
+
+.collapsible {
+    color: black;
+}
+
+.collapsible-body {
     background-color: white;
 }
 
-.search-icon {
-    position: absolute;
-    width: 8%;
-    margin: 18px 0 10px 15px;
+.collapsible-body p {
+    font-size: 0.8rem;
 }
 
 /* media queries */
