@@ -12,11 +12,10 @@ function getRandomRace() {
     })
 
     .then(function (races) {
-      var races = races.results[[Math.floor(Math.random() * races.results.length)]]
-    var randomRace = $('.left');
-      for (var i = 0; i < randomRace.length; i++) {
-        $(randomRace[i]).text(races.name)
-        console.log($(randomRace[i]).text(races.name))
+      for (var i = 0; i < 5; i++) {
+        var raceName = races.results[Math.floor(Math.random() * races.results.length)]
+        var randomRace = document.querySelector("[data-char-header='" + i + "']");
+        randomRace.textContent = raceName.name;
       }
       console.log(races.name)
     });
