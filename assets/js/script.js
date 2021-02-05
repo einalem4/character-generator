@@ -3,6 +3,7 @@ var instance = M.Collapsible.init(elem, { accordion: false });
 var generateCharacter = document.querySelector('#generate')
 
 
+
 function getRandomRace() {
   fetch('https://www.dnd5eapi.co/api/races')
 
@@ -12,8 +13,12 @@ function getRandomRace() {
 
     .then(function (races) {
       var races = races.results[[Math.floor(Math.random() * races.results.length)]]
+    var randomRace = $('.left');
+      for (var i = 0; i < randomRace.length; i++) {
+        $(randomRace[i]).text(races.name)
+        console.log($(randomRace[i]).text(races.name))
+      }
       console.log(races.name)
-      return races.name
     });
 }
 getRandomRace()
@@ -33,6 +38,7 @@ function getRandomClass() {
     });
 }
 getRandomClass()
+
 
 
 //when the generate character button is clicked it generates random information
