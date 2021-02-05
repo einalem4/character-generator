@@ -18,6 +18,11 @@ body {
     color: white;
     font-family: montserrat, sans-serif;
     overflow-x: hidden;
+    background-image: url("../images/web-ready/hero-background.jpg");
+    background-position: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* header section */
@@ -28,10 +33,12 @@ main {
 
 .logo {
     width: 100%;
+    margin: 10px 0;
 }
 
 p {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
 }
 
 #generate {
@@ -51,6 +58,32 @@ p {
 
 /* search results */
 
+.hide {
+    display: none !important;
+}
+
+h2 {
+    font-weight: 900;
+    font-size: 1rem;
+    display: inline;
+    margin: 0;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 20px 0 10px 0;
+}
+
+h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+hr {
+    margin-bottom: 10px;
+}
+
 .collapsible {
     color: black;
 }
@@ -66,7 +99,31 @@ p {
 }
 
 .collapsible-body p {
-    font-size: 0.8rem;
+    font-size: 1rem;
+}
+
+p strong {
+    font-weight: 700;
 }
 
 /* media queries */
+@media screen and (min-width: 768px) {
+    .logo {
+        width: 80%;
+    }
+
+    p {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    #generate {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    p {
+        font-size: 1.75rem;
+    }
+}
