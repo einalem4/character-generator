@@ -19,11 +19,10 @@ body {
     font-family: montserrat, sans-serif;
     overflow-x: hidden;
     background-image: url("../images/web-ready/hero-background.jpg");
-    background-position: cover;
-    background-position: right;
+    background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
+    background-size: cover;
 
 /* header section */
 main {
@@ -54,6 +53,24 @@ p {
 
 .character-results {
     width: 100vw;
+}
+
+/* saved characters */
+.saved-characters {
+    width: 100vw;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.saved-char-btn {
+    background-color: transparent;
+    border: 2px solid #78909c;
+    line-height: 30px;
+}
+
+.saved-char-btn:hover {
+    background-color: #78909c;
 }
 
 /* search results */
