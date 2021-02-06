@@ -24,15 +24,24 @@ function generateCharacter() {
             var className = classes.results[Math.floor(Math.random() * classes.results.length)]
             var raceAndClass = document.querySelector("[data-char-header='" + counter + "']");
             raceAndClass.textContent = raceName.name + "  " + className.name
+            console.log('https://www.dnd5eapi.co/api/classes/barbarian')
+            return fetch('https://www.dnd5eapi.co/api/classes/barbarian')
+          })
+          .then(function (data) {
+            return data.json();
+          })
+          .then(function (classDetails) {
+            var hitDie = document.querySelector("[data-char-hit-die='" + counter + "']")
+            hitDie.textContent = "Hit Die: " + classDetails.hit_die;
             counter++
-
           })
       })
+
   }
 }
 
 // when the generate character button is clicked it generates random information
-generateBtn.addEventListener("click", function (e){
+generateBtn.addEventListener("click", function (e) {
   e.preventDefault()
   charList.classList.remove("hide");
   generateCharacter();
