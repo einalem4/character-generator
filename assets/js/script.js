@@ -34,13 +34,13 @@ function generateCharacter() {
           .then(function (classDetails) {
             //calls hit die information
             var hitDie = document.querySelector("[data-char-hit-die='" + counter + "']")
-            hitDie.innerHTML = "<strong>Hit Die: </strong>" 
+            hitDie.innerHTML = "<strong>Hit Die: </strong>"
             var classEl = document.createElement('p');
             classEl.classList = "class features"
             classEl.textContent = "1d" + classDetails.hit_die;
             hitDie.appendChild(classEl);
 
-            // calls skill proficiency
+            //calls skill proficiency
             var proficSkill = document.querySelector("[data-char-skill-prof='" + counter + "']")
             proficSkill.innerHTML = "<strong>Skill Proficiences: </strong>"
             for (var j = 0; j < classDetails.proficiency_choices.length; j++) {
@@ -61,14 +61,26 @@ function generateCharacter() {
               wepEl.classList = "proficiency"
               wepEl.textContent = wepArmEl + " ";
               wepAndArmor.appendChild(wepEl);
-              console.log(wepArmEl)
-              console.log(wepAndArmor)
             }
+            //fetch starter equipment
+            return fetch('https://www.dnd5eapi.co/api/starting-equipment/')
+          })
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (starterEquip) {
+            console.log(starterEquip )
             counter++
           })
       })
   }
 }
+
+
+
+
+
+
 
 
 
