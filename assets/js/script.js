@@ -47,7 +47,7 @@ function generateImages() {
 //fetch function grabs and places images for their respective class and race
 function imgFetch(j) {
     fetch(
-      'http://api.serpstack.com/search' +
+      'https://api.serpstack.com/search' +
       '?access_key=35320024a8400cca6f311123b3fce677' + 
       '&type=images' + 
       '&num=5' + 
