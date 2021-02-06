@@ -24,21 +24,53 @@ function generateCharacter() {
             var className = classes.results[Math.floor(Math.random() * classes.results.length)]
             var raceAndClass = document.querySelector("[data-char-header='" + counter + "']");
             raceAndClass.textContent = raceName.name + "  " + className.name
-            console.log('https://www.dnd5eapi.co/api/classes/barbarian')
-            return fetch('https://www.dnd5eapi.co/api/classes/barbarian')
+
+            // fetch the random class details
+            return fetch(randomClass + "/" + className.index)
           })
-          .then(function (data) {
-            return data.json();
+          .then(function (response) {
+            return response.json();
           })
           .then(function (classDetails) {
+            //calls hit die information
             var hitDie = document.querySelector("[data-char-hit-die='" + counter + "']")
-            hitDie.textContent = "Hit Die: " + classDetails.hit_die;
+            hitDie.innerHTML = "<strong>Hit Die: </strong>" 
+            var classEl = document.createElement('p');
+            classEl.classList = "class features"
+            classEl.textContent = "1d" + classDetails.hit_die;
+            hitDie.appendChild(classEl);
+
+            // calls skill proficiency
+            var proficSkill = document.querySelector("[data-char-skill-prof='" + counter + "']")
+            proficSkill.innerHTML = "<strong>Skill Proficiences: </strong>"
+            for (var j = 0; j < classDetails.proficiency_choices.length; j++) {
+              for (var k = 0; k < classDetails.proficiency_choices[j].choose; k++) {
+                var randomProf = classDetails.proficiency_choices[j].from[Math.floor(Math.random() * classDetails.proficiency_choices[j].from.length)].name;
+                var profEl = document.createElement('p');
+                profEl.classList = "proficiency"
+                profEl.textContent = randomProf + " ";
+                proficSkill.appendChild(profEl);
+              }
+            }
+            //calls weapon & armor proficiences
+            var wepAndArmor = document.querySelector("[data-char-class-prof='" + counter + "']")
+            wepAndArmor.innerHTML = "<strong>Weapon & Armor Proficiences: </strong>"
+            for (var j = 0; j < classDetails.proficiencies.length; j++) {
+              var wepArmEl = classDetails.proficiencies[j].name
+              var wepEl = document.createElement('p');
+              wepEl.classList = "proficiency"
+              wepEl.textContent = wepArmEl + " ";
+              wepAndArmor.appendChild(wepEl);
+              console.log(wepArmEl)
+              console.log(wepAndArmor)
+            }
             counter++
           })
       })
-
   }
 }
+
+
 
 // when the generate character button is clicked it generates random information
 generateBtn.addEventListener("click", function (e) {
