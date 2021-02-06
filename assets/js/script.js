@@ -1,49 +1,33 @@
 var elem = document.querySelector('.collapsible.expandable');
 var instance = M.Collapsible.init(elem, { accordion: false });
-var generateCharacter = document.querySelector('#generate')
+var generateBtn = document.querySelector('#generate');
+var randomRace = 'https://www.dnd5eapi.co/api/races';
+var randomClass = 'https://www.dnd5eapi.co/api/classes';
 
 
-
-function getRandomRace() {
-  fetch('https://www.dnd5eapi.co/api/races')
-
-    .then(function (response) {
-      return response.json();
-    })
-
-    .then(function (races) {
-      for (var i = 0; i < 5; i++) {
+function generateCharacter() {
+  for (var j = 0; j < 5; j++) {
+    var counter = 0
+    fetch(randomRace)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (races) {
         var raceName = races.results[Math.floor(Math.random() * races.results.length)]
-        var randomRace = document.querySelector("[data-char-header='" + i + "']");
-        randomRace.textContent = raceName.name;
-      }
-      console.log(races.name)
-    });
+
+        return fetch(randomClass)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (classes) {
+            var className = classes.results[Math.floor(Math.random() * classes.results.length)]
+            var raceAndClass = document.querySelector("[data-char-header='" + counter + "']");
+            raceAndClass.textContent = raceName.name + "  " + className.name
+            counter++
+          })
+      })
+  }
 }
-getRandomRace()
 
-function getRandomClass() {
-  fetch('https://www.dnd5eapi.co/api/classes')
-
-    .then(function (response) {
-      return response.json();
-    })
-
-    .then(function (classes) {
-      var classes = classes.results[[Math.floor(Math.random() * classes.results.length)]]
-      console.log(classes.name)
-      return classes.name
-
-    });
-}
-getRandomClass()
-
-
-
-//when the generate character button is clicked it generates random information
-generateCharacter.addEventListener("click", function (e) {
-  e.preventDefault();
-  getRandomRace();
-  getRandomClass();
-  console.log("this worked!")
-});
+// when the generate character button is clicked it generates random information
+generateBtn.addEventListener("click", generateCharacter);
