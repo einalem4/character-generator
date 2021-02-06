@@ -3,8 +3,9 @@ var instance = M.Collapsible.init(elem, { accordion: false });
 var generateBtn = document.querySelector('#generate');
 var randomRace = 'https://www.dnd5eapi.co/api/races';
 var randomClass = 'https://www.dnd5eapi.co/api/classes';
+var charList = document.querySelector(".character-results")
 
-
+//pulls random race and class
 function generateCharacter() {
   for (var j = 0; j < 5; j++) {
     var counter = 0
@@ -24,10 +25,15 @@ function generateCharacter() {
             var raceAndClass = document.querySelector("[data-char-header='" + counter + "']");
             raceAndClass.textContent = raceName.name + "  " + className.name
             counter++
+
           })
       })
   }
 }
 
 // when the generate character button is clicked it generates random information
-generateBtn.addEventListener("click", generateCharacter);
+generateBtn.addEventListener("click", function (e){
+  e.preventDefault()
+  charList.classList.remove("hide");
+  generateCharacter();
+})
