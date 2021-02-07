@@ -52,14 +52,14 @@ function charName(raceName, className, counter) {
       return response.json();
     })
     .then(function (data) {
- 
+
       for (var j = 0; j < 5; j++) {
         //randomizes male names
         var nameEl = data.races[j].male[Math.floor(Math.random() * data.races[j].male.length)]
         //randomizes clan names
         var clanEl = data.races[j].clan[Math.floor(Math.random() * data.races[j].clan.length)]
         var genEl = document.querySelector("[data-char-header='" + counter + "']");
-        genEl.textContent = nameEl +  "  " + clanEl + " the " + raceName + "  " + className
+        genEl.textContent = nameEl + "  " + clanEl + " the " + raceName + "  " + className
       }
     })
 }
