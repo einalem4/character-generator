@@ -33,6 +33,8 @@ function generateCharacter() {
 
 
 function classFeatures(className, counter) {
+  console.log (className)
+  console.log (counter)
   // fetch the random class details
   fetch(randomClass + "/" + className.index)
     .then(function (response) {
@@ -70,7 +72,7 @@ function classFeatures(className, counter) {
         wepAndArmor.appendChild(wepEl);
       }
       //fetch starter equipment
-      return fetch('https://www.dnd5eapi.co/api/starting-equipment/' + classDetails.index)
+      return fetch('https://www.dnd5eapi.co/api/starting-equipment/' + className.index)
     })
     .then(function (response) {
       return response.json();
