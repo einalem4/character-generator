@@ -22,59 +22,74 @@ function generateCharacter() {
           })
           .then(function (classes) {
             var className = classes.results[Math.floor(Math.random() * classes.results.length)]
+            classFeatures(className, counter);
             var raceAndClass = document.querySelector("[data-char-header='" + counter + "']");
             raceAndClass.textContent = raceName.name + "  " + className.name
-
-            // fetch the random class details
-            return fetch(randomClass + "/" + className.index)
-          })
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (classDetails) {
-            //calls hit die information
-            var hitDie = document.querySelector("[data-char-hit-die='" + counter + "']")
-            hitDie.innerHTML = "<strong>Hit Die: </strong>"
-            var classEl = document.createElement('p');
-            classEl.classList = "class features"
-            classEl.textContent = "1d" + classDetails.hit_die;
-            hitDie.appendChild(classEl);
-
-            //calls skill proficiency
-            var proficSkill = document.querySelector("[data-char-skill-prof='" + counter + "']")
-            proficSkill.innerHTML = "<strong>Skill Proficiences: </strong>"
-            for (var j = 0; j < classDetails.proficiency_choices.length; j++) {
-              for (var k = 0; k < classDetails.proficiency_choices[j].choose; k++) {
-                var randomProf = classDetails.proficiency_choices[j].from[Math.floor(Math.random() * classDetails.proficiency_choices[j].from.length)].name;
-                var profEl = document.createElement('p');
-                profEl.classList = "proficiency"
-                profEl.textContent = randomProf + " ";
-                proficSkill.appendChild(profEl);
-              }
-            }
-            //calls weapon & armor proficiences
-            var wepAndArmor = document.querySelector("[data-char-class-prof='" + counter + "']")
-            wepAndArmor.innerHTML = "<strong>Weapon & Armor Proficiences: </strong>"
-            for (var j = 0; j < classDetails.proficiencies.length; j++) {
-              var wepArmEl = classDetails.proficiencies[j].name
-              var wepEl = document.createElement('p');
-              wepEl.classList = "proficiency"
-              wepEl.textContent = wepArmEl + " ";
-              wepAndArmor.appendChild(wepEl);
-            }
-            //fetch starter equipment
-            return fetch('https://www.dnd5eapi.co/api/starting-equipment/')
-          })
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (starterEquip) {
-            console.log(starterEquip )
             counter++
           })
       })
   }
 }
+
+
+function classFeatures(className, counter) {
+  // fetch the random class details
+  fetch(randomClass + "/" + className.index)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (classDetails) {
+      //calls hit die information
+      var hitDie = document.querySelector("[data-char-hit-die='" + counter + "']")
+      hitDie.innerHTML = "<strong>Hit Die: </strong>"
+      var classEl = document.createElement('p');
+      classEl.classList = "class features"
+      classEl.textContent = "1d" + classDetails.hit_die;
+      hitDie.appendChild(classEl);
+
+      //calls skill proficiency
+      var proficSkill = document.querySelector("[data-char-skill-prof='" + counter + "']")
+      proficSkill.innerHTML = "<strong>Skill Proficiences: </strong>"
+      for (var j = 0; j < classDetails.proficiency_choices.length; j++) {
+        for (var k = 0; k < classDetails.proficiency_choices[j].choose; k++) {
+          var randomProf = classDetails.proficiency_choices[j].from[Math.floor(Math.random() * classDetails.proficiency_choices[j].from.length)].name;
+          var profEl = document.createElement('p');
+          profEl.classList = "proficiency"
+          profEl.textContent = randomProf + " ";
+          proficSkill.appendChild(profEl);
+        }
+      }
+      //calls weapon & armor proficiences
+      var wepAndArmor = document.querySelector("[data-char-class-prof='" + counter + "']")
+      wepAndArmor.innerHTML = "<strong>Weapon & Armor Proficiences: </strong>"
+      for (var j = 0; j < classDetails.proficiencies.length; j++) {
+        var wepArmEl = classDetails.proficiencies[j].name
+        var wepEl = document.createElement('p');
+        wepEl.classList = "proficiency"
+        wepEl.textContent = wepArmEl + " ";
+        wepAndArmor.appendChild(wepEl);
+      }
+      //fetch starter equipment
+      return fetch('https://www.dnd5eapi.co/api/starting-equipment/' + classDetails.index)
+    })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (starterEquip) {
+      var equip = document.querySelector("[data-char-equip='" + counter + "']")
+      equip.innerHTML = "<h4>Starting Equipment</h4>"
+      for (var j = 0; j < starterEquip.starting_equipment.length; j++) {
+        var equipEl = starterEquip.starting_equipment[j].equipment.name
+        console.log(starterEquip.starting_equipment[j].equipment.name)
+        var starterEl = document.createElement('p');
+        starterEl.classList = "equipment"
+        starterEl.textContent = equipEl + " ";
+        equip.appendChild(starterEl);
+      }
+    })
+}
+
+
 
 
 
