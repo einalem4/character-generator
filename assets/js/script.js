@@ -3,7 +3,7 @@ var instance = M.Collapsible.init(elem, { accordion: false });
 var generateBtn = document.querySelector('#generate');
 var randomRace = 'https://www.dnd5eapi.co/api/races';
 var randomClass = 'https://www.dnd5eapi.co/api/classes';
-var nameGen = 'http://atomicthoughts.com/dndnames.json';
+var nameGen = 'http://atomicthoughts.com/dnd/dndnames.json';
 var charList = document.querySelector(".character-results");
 var raceList = [];
 var classList = [];
@@ -19,6 +19,7 @@ function generateCharacter() {
         return response.json();
       })
       .then(function (races) {
+        //randomizes race
         var raceName = races.results[Math.floor(Math.random() * races.results.length)]
         raceList.push(raceName.index);
         return fetch(randomClass)
@@ -26,12 +27,15 @@ function generateCharacter() {
             return response.json();
           })
           .then(function (classes) {
+            //randomizes class 
             var className = classes.results[Math.floor(Math.random() * classes.results.length)]
+            //triggers class features function
             classFeatures(className, counter);
             classList.push(className.index);
             var raceAndClass = document.querySelector("[data-char-header='" + counter + "']");
+            //puts race/class names together
             raceAndClass.textContent = raceName.name + "  " + className.name;
-            charName();
+            charName(raceName.name, className.name, counter);
             // calls function to get racial features. passes race and counter
             charRaceFeatures(raceName.index, counter);
             counter++
@@ -41,13 +45,22 @@ function generateCharacter() {
   }
 }
 
-function charName() {
+//generate random character name
+function charName(raceName, className, counter) {
   fetch(nameGen)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data)
+ 
+      for (var j = 0; j < 5; j++) {
+        //randomizes male names
+        var nameEl = data.races[j].male[Math.floor(Math.random() * data.races[j].male.length)]
+        //randomizes clan names
+        var clanEl = data.races[j].clan[Math.floor(Math.random() * data.races[j].clan.length)]
+        var genEl = document.querySelector("[data-char-header='" + counter + "']");
+        genEl.textContent = nameEl +  "  " + clanEl + " the " + raceName + "  " + className
+      }
     })
 }
 
