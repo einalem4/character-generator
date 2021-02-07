@@ -90,13 +90,12 @@ var charRaceFeatures = function(race, counter) {
       charSize.innerHTML = "<strong>Size: </strong>" + data.size + ". " + sizeDes[0];
 
       getRaceProf(data, counter);
-      // getRaceTraits(data, counter);
+      getRaceTraits(data, counter);
     })
   })
 };
 
 var getRaceProf = function(race, counter) {
-  console.log(race);
   var charSkillProf = document.querySelector("[data-char-race-skill-prof='" + counter + "']");
   var charWeapProf = document.querySelector("[data-char-race-weapon-prof='" + counter + "']");
   var charToolProf = document.querySelector("[data-char-race-tool-prof='" + counter + "']");
@@ -192,6 +191,11 @@ var getRaceProf = function(race, counter) {
     } 
   }
 };
+
+var getRaceTraits = function(race, counter) {
+  var charRaceTrait = document.querySelector("[data-char-race-trait='" + counter + "']");
+  charRaceTrait.innerHTML = "<strong>" + race.traits[0].name + "</strong>";
+}
 
 // when the generate character button is clicked it generates random information
 generateBtn.addEventListener("click", function (e){
