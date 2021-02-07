@@ -124,6 +124,10 @@ p strong {
     font-weight: 700;
 }
 
+.ability-bonus, .proficiency {
+    display: inline;
+}
+
 /* media queries */
 @media screen and (min-width: 768px) {
     .logo {
