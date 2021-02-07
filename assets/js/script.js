@@ -3,11 +3,11 @@ var instance = M.Collapsible.init(elem, { accordion: false });
 var generateBtn = document.querySelector('#generate');
 var randomRace = 'https://www.dnd5eapi.co/api/races';
 var randomClass = 'https://www.dnd5eapi.co/api/classes';
+var nameGen = 'http://atomicthoughts.com/dndnames.json';
 var charList = document.querySelector(".character-results");
 var raceList = [];
 var classList = [];
 var imgList = [];
-
 
 
 //pulls random race and class
@@ -31,6 +31,7 @@ function generateCharacter() {
             classList.push(className.index);
             var raceAndClass = document.querySelector("[data-char-header='" + counter + "']");
             raceAndClass.textContent = raceName.name + "  " + className.name;
+            charName();
             // calls function to get racial features. passes race and counter
             charRaceFeatures(raceName.index, counter);
             counter++
@@ -38,6 +39,16 @@ function generateCharacter() {
           })
       })
   }
+}
+
+function charName() {
+  fetch(nameGen)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data)
+    })
 }
 
 
