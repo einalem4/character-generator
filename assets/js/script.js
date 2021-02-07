@@ -33,8 +33,6 @@ function generateCharacter() {
 
 
 function classFeatures(className, counter) {
-  console.log (className)
-  console.log (counter)
   // fetch the random class details
   fetch(randomClass + "/" + className.index)
     .then(function (response) {
@@ -48,6 +46,17 @@ function classFeatures(className, counter) {
       classEl.classList = "class features"
       classEl.textContent = "1d" + classDetails.hit_die;
       hitDie.appendChild(classEl);
+
+      //calls saving throw
+      var saveThrow = document.querySelector("[data-char-saving-throw='" + counter + "']")
+      saveThrow.innerHTML = "<strong>Saving Throw: </strong>"
+      for (var j = 0; j < classDetails.saving_throws.length; j++) {
+        var throwEl = document.createElement('p');
+        var saveEl = classDetails.saving_throws[j].name;
+        throwEl.classList = "class features"
+        throwEl.textContent = saveEl
+        saveThrow.appendChild(throwEl);
+      }
 
       //calls skill proficiency
       var proficSkill = document.querySelector("[data-char-skill-prof='" + counter + "']")
@@ -78,14 +87,15 @@ function classFeatures(className, counter) {
       return response.json();
     })
     .then(function (starterEquip) {
+      //starting equipment
       var equip = document.querySelector("[data-char-equip='" + counter + "']")
       equip.innerHTML = "<h4>Starting Equipment</h4>"
       for (var j = 0; j < starterEquip.starting_equipment.length; j++) {
         var equipEl = starterEquip.starting_equipment[j].equipment.name
-        console.log(starterEquip.starting_equipment[j].equipment.name)
+        var amount = starterEquip.starting_equipment[j].quantity
         var starterEl = document.createElement('p');
         starterEl.classList = "equipment"
-        starterEl.textContent = equipEl + " ";
+        starterEl.textContent = equipEl + " (" + amount + ")"
         equip.appendChild(starterEl);
       }
     })
