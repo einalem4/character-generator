@@ -3,12 +3,11 @@ var instance = M.Collapsible.init(elem, { accordion: false });
 var generateBtn = document.querySelector('#generate');
 var randomRace = 'https://www.dnd5eapi.co/api/races';
 var randomClass = 'https://www.dnd5eapi.co/api/classes';
-var nameGen = 'http://atomicthoughts.com/dnd/dndnames.json';
+var nameGen = 'https://s3-us-west-2.amazonaws.com/atomicthoughts.com/dnd/dndnames.json';
 var charList = document.querySelector(".character-results");
 var raceList = [];
 var classList = [];
 var imgList = [];
-
 
 //pulls random race and class
 function generateCharacter() {
