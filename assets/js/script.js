@@ -145,18 +145,17 @@ function generateImages() {
   for (j = 0; j < 5; j++) {
     imgFetch(j);
   }
-}
 
   //fetch function grabs and places images for their respective class and race
   function imgFetch(j) {
     fetch(
       'https://api.serpstack.com/search' +
-      '?access_key=7eaf47eac7faae1474915a4711ffb864' + 
-      '&type=images' + 
-      '&num=5' + 
-      '&query=' + 
-      raceList[j] + 
-      '+' + 
+      '?access_key=35320024a8400cca6f311123b3fce677' +
+      '&type=images' +
+      '&num=5' +
+      '&query=' +
+      raceList[j] +
+      '+' +
       classList[j]
     )
       .then(function (response) {
@@ -170,7 +169,7 @@ function generateImages() {
         charImgEl.setAttribute('width', '300px');
       })
   }
-
+}
 
 // function to get racial features
 var charRaceFeatures = function (race, counter) {
