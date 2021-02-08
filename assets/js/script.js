@@ -5,13 +5,16 @@ var randomRace = 'https://www.dnd5eapi.co/api/races';
 var randomClass = 'https://www.dnd5eapi.co/api/classes';
 var nameGen = 'http://atomicthoughts.com/dnd/dndnames.json';
 var charList = document.querySelector(".character-results");
-var raceList = [];
-var classList = [];
-var imgList = [];
+var raceList;
+var classList;
+var imgList;
 
 
 //pulls random race and class
 function generateCharacter() {
+  raceList = [];
+  classList = [];
+  imgList = [];
   for (var j = 0; j < 5; j++) {
     var counter = 0
     fetch(randomRace)
