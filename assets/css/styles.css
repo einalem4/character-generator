@@ -31,6 +31,12 @@ main {
     height: 50vh;
 }
 
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .logo {
     width: 100%;
     margin: 10px 0;
@@ -44,7 +50,6 @@ p {
 #generate {
     width: 100%;
     margin-top: 20px;
-    font-size: 800;
 }
 
 .btn-text {
@@ -52,17 +57,14 @@ p {
     font-weight: 900;
 }
 
-.character-results {
-    width: 100vw;
+#show-saved-char, #dlt-saved-char {
+    width: 100%;
+    margin-top: 20px;
 }
 
 /* saved characters */
 .saved-characters {
     width: 100vw;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 }
 
 .saved-char-btn {
@@ -76,6 +78,9 @@ p {
 }
 
 /* search results */
+.character-results {
+    width: 100vw;
+}
 
 .hide {
     display: none !important;
@@ -113,6 +118,20 @@ hr {
     align-items: center;
 }
 
+.collapsible-header div {
+    display: flex;
+    align-items: center;
+}
+
+.btn-flat {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-flat i {
+    margin-right: 0.5rem !important;
+}
+
 .collapsible-body {
     background-color: white;
 }
@@ -125,7 +144,7 @@ p strong {
     font-weight: 700;
 }
 
-.ability-bonus, .proficiency {
+.ability-bonus, .proficiency, .class-feature {
     display: inline;
 }
 
@@ -134,7 +153,7 @@ p strong {
 }
 
 /* media queries */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     .logo {
         width: 80%;
     }
@@ -146,6 +165,18 @@ p strong {
 
     #generate {
         width: 70%;
+    }
+
+    .saved-char-container {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+    }
+
+    #show-saved-char, #dlt-saved-char {
+        width: 48%;
+        display: inline;
     }
 }
 
