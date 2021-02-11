@@ -83,7 +83,7 @@ function classFeatures(className, counter) {
       var hitDie = document.querySelector("[data-char-hit-die='" + counter + "']")
       hitDie.innerHTML = "<strong>Hit Die: </strong>"
       var classEl = document.createElement('p');
-      classEl.classList = "class features"
+      classEl.classList = "class-feature"
       classEl.textContent = "1d" + classDetails.hit_die;
       hitDie.appendChild(classEl);
 
@@ -93,7 +93,7 @@ function classFeatures(className, counter) {
       for (var j = 0; j < classDetails.saving_throws.length; j++) {
         var throwEl = document.createElement('p');
         var saveEl = classDetails.saving_throws[j].name;
-        throwEl.classList = "class features"
+        throwEl.classList = "class-feature"
         throwEl.textContent = saveEl
         saveThrow.appendChild(throwEl);
       }
@@ -332,7 +332,6 @@ var getRaceProf = function (race, counter) {
   }
 };
 
-<<<<<<< HEAD
 var getRaceTraits = function(race, counter) {
   var count = 0;
   console.log(race.traits);
@@ -355,12 +354,6 @@ var getRaceTraits = function(race, counter) {
     }
   }
 };
-=======
-var getRaceTraits = function (race, counter) {
-  var charRaceTrait = document.querySelector("[data-char-race-trait='" + counter + "']");
-  charRaceTrait.innerHTML = "<strong>" + race.traits[0].name + "</strong>";
-}
->>>>>>> 0facbc2fa889fae05a4c15215c9ddb6e569f5c40
 
 // when the generate character button is clicked it generates random information
 generateBtn.addEventListener("click", function (e) {
@@ -424,7 +417,7 @@ function saveCharacter5() {
   saveCharacter(5);
 }
 
-document.getElementById("saved-char-btn").addEventListener("click", loadCharacter);
+document.getElementById("show-saved-char").addEventListener("click", loadCharacter);
 document.getElementById("save-btn1").addEventListener("click", saveCharacter1);
 document.getElementById("save-btn2").addEventListener("click", saveCharacter2);
 document.getElementById("save-btn3").addEventListener("click", saveCharacter3);

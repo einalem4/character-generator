@@ -16,10 +16,12 @@
         <div class="main-content valign-wrapper container row">
             <div class="center-align col s12">
                 <img src="./assets/images/logo/character-generator.svg" alt="Character Generator logo" class="logo" />
-                <p class="center-align col s12">Click the button for a random character</p>
+                <p class="center-align">Click the button for a random character</p>
                 <button id="generate" class="waves-effect waves-light btn blue darken-3"><span class="btn-txt">GENERATE CHARACTER</span></button>
-                <button id="show-saved-char" class="btn z-depth-0 saved-char-btn">SHOW SAVED CHARACTERS</button>
-                <button id="dlt-saved-char" class="btn z-depth-0 saved-char-btn">DELETE SAVED CHARACTERS</button>
+                <div class="saved-char-container">
+                    <button id="show-saved-char" class="btn z-depth-0 saved-char-btn">SHOW SAVED CHARACTERS</button>
+                    <button id="dlt-saved-char" class="btn z-depth-0 saved-char-btn">DELETE SAVED CHARACTERS</button>
+                </div> 
             </div>
         </div>
     </main>
@@ -34,7 +36,7 @@
                         <i class="material-icons">expand_more</i>
                         <h2 data-char-header="0"></h2>
                     </div>
-                    <button id="save-btn1" class="btn-flat">SAVE CHARACTER</button>
+                    <button id="save-btn1" class="btn-flat"><i class="material-icons">save</i><span class="hide-on-small-only">SAVE CHARACTER</span></button>
                 </div>
                 <div class="collapsible-body">
                     <div class="row">
@@ -76,7 +78,6 @@
                                     <p data-char-class-tool-prof="0"></p>
                                 </div>
                                 <div class="class-equipment">
-                                    <h4>Starting Equipment</h4>
                                     <p data-char-equip="0"></p>
                                 </div>
                             </div>
@@ -90,7 +91,7 @@
                         <i class="material-icons">expand_more</i>
                         <h2 data-char-header="1"></h2>
                     </div>
-                    <button id="save-btn2" class="btn-flat">SAVE CHARACTER</button>
+                    <button id="save-btn2" class="btn-flat"><i class="material-icons">save</i><span class="hide-on-small-only">SAVE CHARACTER</span></button>
                 </div>
                 </div>
                 <div class="collapsible-body">
@@ -133,7 +134,6 @@
                                 <p data-char-class-tool-prof="1"></p>
                             </div>
                             <div class="class-equipment">
-                                <h4>Starting Equipment</h4>
                                 <p data-char-equip="1"></p>
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                         <i class="material-icons">expand_more</i>
                         <h2 data-char-header="2"></h2>
                     </div>
-                    <button id="save-btn3" class="btn-flat">SAVE CHARACTER</button>
+                    <button id="save-btn3" class="btn-flat"><i class="material-icons">save</i><span class="hide-on-small-only">SAVE CHARACTER</span></button>
                 </div>
                 </div>
                 <div class="collapsible-body">
@@ -191,7 +191,6 @@
                                 <p data-char-class-tool-prof="2"></p>
                             </div>
                             <div class="class-equipment">
-                                <h4>Starting Equipment</h4>
                                 <p data-char-equip="2"></p>
                             </div>
                         </div>
@@ -206,7 +205,7 @@
                         <i class="material-icons">expand_more</i>
                         <h2 data-char-header="3"></h2>
                     </div>
-                    <button id="save-btn4" class="btn-flat">SAVE CHARACTER</button>
+                    <button id="save-btn4" class="btn-flat"><i class="material-icons">save</i><span class="hide-on-small-only">SAVE CHARACTER</span></button>
                 </div>
                 <div class="collapsible-body">
                     <div class="row">
@@ -248,7 +247,6 @@
                                 <p data-char-class-tool-prof="3"></p>
                             </div>
                             <div class="class-equipment">
-                                <h4>Starting Equipment</h4>
                                 <p data-char-equip="3"></p>
                             </div>
                         </div>
@@ -263,7 +261,7 @@
                         <i class="material-icons">expand_more</i>
                         <h2 data-char-header="4" ></h2>
                     </div>
-                    <button id="save-btn5" class="btn-flat">SAVE CHARACTER</button>
+                    <button id="save-btn5" class="btn-flat"><i class="material-icons">save</i><span class="hide-on-small-only">SAVE CHARACTER</span></button>
                 </div>
                 <div class="collapsible-body">
                     <div class="row">
@@ -305,7 +303,6 @@
                                 <p data-char-class-tool-prof="4"></p>
                             </div>
                             <div class="class-equipment">
-                                <h4>Starting Equipment</h4>
                                 <p data-char-equip="4"></p>
                             </div>
                         </div>
@@ -315,7 +312,7 @@
         </ul>
     </section>
 
-    <section class="saved-characters valign-wrapper center">
+    <section class="saved-characters container">
         <ul id="saved-character-list" class="collapsible expandable hide"></ul>
     </section>
 
