@@ -396,6 +396,11 @@ function loadCharacter() {
   savedCharacterList.classList.remove("hide");
 }
 
+// clears local storage and removes displayed saved characters
+function clearStorage() {
+  localStorage.clear();
+  loadCharacter();
+}
 
 function saveCharacter1() {
   saveCharacter(1);
@@ -416,9 +421,11 @@ function saveCharacter5() {
   saveCharacter(5);
 }
 
+document.getElementById("dlt-saved-char").addEventListener("click", clearStorage);
 document.getElementById("show-saved-char").addEventListener("click", loadCharacter);
 document.getElementById("save-btn1").addEventListener("click", saveCharacter1);
 document.getElementById("save-btn2").addEventListener("click", saveCharacter2);
 document.getElementById("save-btn3").addEventListener("click", saveCharacter3);
 document.getElementById("save-btn4").addEventListener("click", saveCharacter4);
 document.getElementById("save-btn5").addEventListener("click", saveCharacter5);
+
