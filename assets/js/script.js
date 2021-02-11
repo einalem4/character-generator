@@ -1,9 +1,7 @@
 var elem = document.querySelector('.collapsible.expandable');
 var instance = M.Collapsible.init(elem, { accordion: false });
-
 var elemSavedList = document.querySelector('#saved-character-list.collapsible.expandable');
 var instanceSavedList = M.Collapsible.init(elemSavedList, { accordion: false });
-
 var generateBtn = document.querySelector('#generate');
 var randomRace = 'https://www.dnd5eapi.co/api/races';
 var randomClass = 'https://www.dnd5eapi.co/api/classes';
@@ -94,7 +92,7 @@ function classFeatures(className, counter) {
         var throwEl = document.createElement('p');
         var saveEl = classDetails.saving_throws[j].name;
         throwEl.classList = "class-feature"
-        throwEl.textContent = saveEl
+        throwEl.textContent = saveEl + "  "
         saveThrow.appendChild(throwEl);
       }
 
@@ -103,10 +101,11 @@ function classFeatures(className, counter) {
       proficSkill.innerHTML = "<strong>Skill Proficiences: </strong>"
       for (var j = 0; j < classDetails.proficiency_choices.length; j++) {
         for (var k = 0; k < classDetails.proficiency_choices[j].choose; k++) {
-          var randomProf = classDetails.proficiency_choices[j].from[Math.floor(Math.random() * classDetails.proficiency_choices[j].from.length)].name;
+          var randomProf = classDetails.proficiency_choices[0].from[Math.floor(Math.random() * classDetails.proficiency_choices[j].from.length)].name;
+          randomProf = randomProf.split(":");
           var profEl = document.createElement('p');
           profEl.classList = "proficiency"
-          profEl.textContent = randomProf + " ";
+          profEl.textContent = randomProf[1] + " ";
           proficSkill.appendChild(profEl);
         }
       }
@@ -332,25 +331,25 @@ var getRaceProf = function (race, counter) {
   }
 };
 
-var getRaceTraits = function(race, counter) {
+var getRaceTraits = function (race, counter) {
   var count = 0;
   console.log(race.traits);
   if (race.traits.length === 0) {
     var charRaceTrait = document.querySelector("[data-char-race-trait-" + count + "='" + counter + "']");
     charRaceTrait.innerHTML = "<strong>None</strong>";
   }
-  else {  
+  else {
     for (var i = 0; i < race.traits.length; i++) {
       var apiRaceUrl = 'https://www.dnd5eapi.co/api/traits/' + race.traits[i].index;
 
-      fetch(apiRaceUrl).then(function(response) {
-        response.json().then(function(traits) {
+      fetch(apiRaceUrl).then(function (response) {
+        response.json().then(function (traits) {
           console.log(traits);
           var charRaceTrait = document.querySelector("[data-char-race-trait-" + count + "='" + counter + "']");
           charRaceTrait.innerHTML = "<strong>" + traits.name + ": " + "</strong>" + traits.desc;
           count++
-        })    
-      })     
+        })
+      })
     }
   }
 };
