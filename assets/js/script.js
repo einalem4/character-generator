@@ -379,7 +379,6 @@ function loadCharacter() {
   savedCharacterList.classList.remove("hide");
 }
 
-
 function saveCharacter1() {
   saveCharacter(1);
 }
@@ -405,3 +404,4 @@ document.getElementById("save-btn2").addEventListener("click", saveCharacter2);
 document.getElementById("save-btn3").addEventListener("click", saveCharacter3);
 document.getElementById("save-btn4").addEventListener("click", saveCharacter4);
 document.getElementById("save-btn5").addEventListener("click", saveCharacter5);
+
