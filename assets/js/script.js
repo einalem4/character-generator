@@ -33,7 +33,7 @@ function generateCharacter() {
             // calls function to get racial features. passes race and counter
             charRaceFeatures(raceName.index, counter);
             counter++
-            generateImages()
+            // generateImages()
           })
       })
   }
@@ -231,9 +231,27 @@ var getRaceProf = function(race, counter) {
 };
 
 var getRaceTraits = function(race, counter) {
-  var charRaceTrait = document.querySelector("[data-char-race-trait='" + counter + "']");
-  charRaceTrait.innerHTML = "<strong>" + race.traits[0].name + "</strong>";
-}
+  var count = 0;
+  console.log(race.traits);
+  if (race.traits.length === 0) {
+    var charRaceTrait = document.querySelector("[data-char-race-trait-" + count + "='" + counter + "']");
+    charRaceTrait.innerHTML = "<strong>None</strong>";
+  }
+  else {  
+    for (var i = 0; i < race.traits.length; i++) {
+      var apiRaceUrl = 'https://www.dnd5eapi.co/api/traits/' + race.traits[i].index;
+
+      fetch(apiRaceUrl).then(function(response) {
+        response.json().then(function(traits) {
+          console.log(traits);
+          var charRaceTrait = document.querySelector("[data-char-race-trait-" + count + "='" + counter + "']");
+          charRaceTrait.innerHTML = "<strong>" + traits.name + ": " + "</strong>" + traits.desc;
+          count++
+        })    
+      })     
+    }
+  }
+};
 
 // when the generate character button is clicked it generates random information
 generateBtn.addEventListener("click", function (e){

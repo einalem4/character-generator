@@ -31,6 +31,12 @@ main {
     height: 50vh;
 }
 
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .logo {
     width: 100%;
     margin: 10px 0;
@@ -52,8 +58,9 @@ p {
     font-weight: 900;
 }
 
-.character-results {
-    width: 100vw;
+#show-saved-char, #dlt-saved-char {
+    width: 100%;
+    margin-top: 20px;
 }
 
 /* saved characters */
@@ -75,6 +82,9 @@ p {
 }
 
 /* search results */
+.character-results {
+    width: 100vw;
+}
 
 .hide {
     display: none !important;
@@ -112,6 +122,11 @@ hr {
     align-items: center;
 }
 
+.collapsible-header div {
+    display: flex;
+    align-items: center;
+}
+
 .collapsible-body {
     background-color: white;
 }
@@ -139,7 +154,7 @@ p strong {
         margin: 10px 0;
     }
 
-    #generate {
+    #generate, #show-saved-char, #dlt-saved-char {
         width: 70%;
     }
 }
