@@ -46,7 +46,7 @@ function generateCharacter() {
             // calls function to get racial features. passes race and counter
             charRaceFeatures(raceName.index, counter);
             counter++
-            // generateImages()
+            generateImages()
           })
       })
   }
