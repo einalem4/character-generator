@@ -1,5 +1,9 @@
 var elem = document.querySelector('.collapsible.expandable');
 var instance = M.Collapsible.init(elem, { accordion: false });
+
+var elemSavedList = document.querySelector('#saved-character-list.collapsible.expandable');
+var instanceSavedList = M.Collapsible.init(elemSavedList, { accordion: false });
+
 var generateBtn = document.querySelector('#generate');
 var randomRace = 'https://www.dnd5eapi.co/api/races';
 var randomClass = 'https://www.dnd5eapi.co/api/classes';
@@ -8,6 +12,7 @@ var charList = document.querySelector(".character-results");
 var raceList;
 var classList;
 var imgList;
+var characters = [];
 
 //pulls random race and class
 function generateCharacter() {
@@ -338,3 +343,65 @@ generateBtn.addEventListener("click", function (e) {
   charList.classList.remove("hide");
   generateCharacter();
 })
+
+const SAVED_CHARACTER_KEY = "savedCharacter"
+
+// save character to local storage
+function saveCharacter(characterNum) {
+  // get previously saved characters from local storage
+  var previouslySavedCharsString = localStorage.getItem(SAVED_CHARACTER_KEY);
+  var previouslySavedChars;
+  if (previouslySavedCharsString == null) {
+    previouslySavedChars = [];
+  } else {
+    previouslySavedChars = JSON.parse(previouslySavedCharsString);
+  }
+
+  // get new character to be saved and add it to existing saved characters
+  var characterItem = document.getElementById("character-" + characterNum + "-item").outerHTML;
+  characterItem = characterItem.replace('id="character-' + characterNum + '-item"', '');
+  previouslySavedChars.push(encodeURI(characterItem));
+
+  // set updated saved characters back to local storage
+  localStorage.setItem(SAVED_CHARACTER_KEY, JSON.stringify(previouslySavedChars));
+}
+
+// loads character and displays it in collapsible
+function loadCharacter() {
+  var loadedCharacters = JSON.parse(localStorage.getItem(SAVED_CHARACTER_KEY));
+  var savedCharacterList = document.getElementById("saved-character-list");
+  savedCharacterList.innerHTML = "";
+
+  for (var i = 0; i < loadedCharacters.length; i++) {
+    savedCharacterList.innerHTML = (savedCharacterList.innerHTML + decodeURI(loadedCharacters[i]));
+  }
+
+  savedCharacterList.classList.remove("hide");
+}
+
+
+function saveCharacter1() {
+  saveCharacter(1);
+}
+
+function saveCharacter2() {
+  saveCharacter(2);
+}
+
+function saveCharacter3() {
+  saveCharacter(3);
+}
+
+function saveCharacter4() {
+  saveCharacter(4);
+}
+function saveCharacter5() {
+  saveCharacter(5);
+}
+
+document.getElementById("saved-char-btn").addEventListener("click", loadCharacter);
+document.getElementById("save-btn1").addEventListener("click", saveCharacter1);
+document.getElementById("save-btn2").addEventListener("click", saveCharacter2);
+document.getElementById("save-btn3").addEventListener("click", saveCharacter3);
+document.getElementById("save-btn4").addEventListener("click", saveCharacter4);
+document.getElementById("save-btn5").addEventListener("click", saveCharacter5);

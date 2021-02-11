@@ -23,18 +23,14 @@
         </div>
     </main>
 
-    <section class="saved-characters valign-wrapper center">
-        <button class="btn z-depth-0 saved-char-btn">SAVED CHARACTER</button>
-    </section>
-
     <section class="character-results container hide">
         <ul class="collapsible expandable">
 
             <!-- character 1 -->
-            <li>
+            <li id="character-1-item">
                 <div class="collapsible-header">
-                    <h2 class="left" data-char-header="0"></h2><button
-                        class="waves-effect waves-light btn blue darken-3 right z-depth-0">SAVE CHARACTER</button>
+                    <h2 class="left" data-char-header="0"></h2><button id="save-btn1"
+                        class="waves-effect waves-light btn blue darken-3 right z-depth-0 save-btn">SAVE CHARACTER</button>
                 </div>
                 <div class="collapsible-body">
                     <div class="row">
@@ -80,10 +76,10 @@
                     </div>
             </li>
             <!-- character 2 -->
-            <li>
+            <li id="character-2-item">
                 <div class="collapsible-header">
-                    <h2 class="left" data-char-header="1"></h2><button
-                        class="waves-effect waves-light btn blue darken-3 right z-depth-0">SAVE CHARACTER</button>
+                    <h2 class="left" data-char-header="1"></h2><button id="save-btn2"
+                        class="waves-effect waves-light btn blue darken-3 right z-depth-0 save-btn">SAVE CHARACTER</button>
                 </div>
                 <div class="collapsible-body">
                     <div class="row">
@@ -129,10 +125,10 @@
                 </div>
             </li>
             <!-- character 3 -->
-            <li>
+            <li id="character-3-item">
                 <div class="collapsible-header">
-                    <h2 class="left" data-char-header="2"></h2><button
-                        class="waves-effect waves-light btn blue darken-3 right z-depth-0">SAVE CHARACTER</button>
+                    <h2 class="left" data-char-header="2"></h2><button id="save-btn3"
+                        class="waves-effect waves-light btn blue darken-3 right z-depth-0 save-btn">SAVE CHARACTER</button>
                 </div>
                 <div class="collapsible-body">
                     <div class="row">
@@ -178,10 +174,10 @@
             </li>
 
             <!-- character 4 -->
-            <li>
+            <li id="character-4-item">
                 <div class="collapsible-header">
-                    <h2 class="left" data-char-header="3"></h2><button
-                        class="waves-effect waves-light btn blue darken-3 right z-depth-0">SAVE CHARACTER</button>
+                    <h2 class="left" data-char-header="3"></h2><button id="save-btn4"
+                        class="waves-effect waves-light btn blue darken-3 right z-depth-0 save-btn">SAVE CHARACTER</button>
                 </div>
                 <div class="collapsible-body">
                     <div class="row">
@@ -227,10 +223,10 @@
             </li>
 
             <!-- character 5 -->
-            <li>
+            <li id="character-5-item">
                 <div class="collapsible-header">
-                    <h2 class="left" data-char-header="4"></h2><button
-                        class="waves-effect waves-light btn blue darken-3 right z-depth-0">SAVE CHARACTER</button>
+                    <h2 class="left" data-char-header="4"></h2><button id="save-btn5"
+                        class="waves-effect waves-light btn blue darken-3 right z-depth-0 save-btn">SAVE CHARACTER</button>
                 </div>
                 <div class="collapsible-body">
                     <div class="row">
@@ -276,6 +272,14 @@
             </li>
         </ul>
     </section>
+
+    <section class="saved-characters valign-wrapper center">
+        <button id="saved-char-btn" class="btn z-depth-0 saved-char-btn">SAVED CHARACTERS</button>
+        <br>
+        <ul id="saved-character-list" class="collapsible expandable hide"></ul>
+    </section>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
