@@ -1,6 +1,5 @@
 :root {
     --dark-grey: rgb(37, 37, 38);
-    --red: rgb(255, 83, 73);
 }
 
 html {
@@ -84,6 +83,11 @@ p {
 
 .hide {
     display: none !important;
+}
+
+.section-header {
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 h2 {
