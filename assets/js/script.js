@@ -32,7 +32,7 @@ function generateCharacter() {
             return response.json();
           })
           .then(function (classes) {
-            //randomizes class 
+            //randomizes class
             var className = classes.results[Math.floor(Math.random() * classes.results.length)]
             //triggers class features function
             classFeatures(className, counter);
@@ -399,7 +399,7 @@ function loadCharacter() {
 // clears local storage and removes displayed saved characters
 function clearStorage() {
   localStorage.clear();
-  loadCharacter();
+  document.getElementById("sv-chars").innerHTML = "";
 }
 
 function saveCharacter1() {
@@ -421,6 +421,7 @@ function saveCharacter5() {
   saveCharacter(5);
 }
 
+// click listeners for all storage-related buttons
 document.getElementById("dlt-saved-char").addEventListener("click", clearStorage);
 document.getElementById("show-saved-char").addEventListener("click", loadCharacter);
 document.getElementById("save-btn1").addEventListener("click", saveCharacter1);
