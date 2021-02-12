@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Generator</title>
+    <link rel="shortcut icon" href="./assets/images/icons/favicon.svg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://use.typekit.net/xuh6puw.css">
@@ -28,6 +29,11 @@
 
     <section class="character-results container hide">
         <ul class="collapsible expandable">
+            <li>
+                <div class="collapsible-header">
+                    <h2 class="section-header">Generated Characters</h2>
+                </div>
+            </li>
 
             <!-- character 1 -->
             <li id="character-1-item">
@@ -313,7 +319,13 @@
     </section>
 
     <section class="saved-characters container">
-        <ul id="saved-character-list" class="collapsible expandable hide"></ul>
+        <ul id="saved-character-list" class="collapsible expandable hide">
+            <li>
+                <div class="collapsible-header">
+                    <h2 class="section-header">Saved Characters</h2>
+                </div>
+            </li>
+        </ul>
     </section>
 
 
