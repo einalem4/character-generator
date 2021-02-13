@@ -51,7 +51,7 @@ A tool to help new Dungeons & Dragons players create characters or help veteran 
 * CSS
 * MaterilizeCSS
 * JavaScript
-* Jquery
+* jQuery
 * Serp API
 * DnD5e API
 
