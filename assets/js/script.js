@@ -15,7 +15,6 @@ var retryList = [0, 0, 0, 0, 0];
 var characters = [];
 const mystChar = "./assets/images/web-ready/mystery-character-image.gif";
 
-
 //pulls random race and class
 function generateCharacter() {
   raceList = [];
@@ -429,8 +428,6 @@ function loadCharacter() {
 
   for (var i = 0; i < loadedCharacters.length; i++) {
     savedCharacterList.innerHTML = (savedCharacterList.innerHTML + decodeURI(loadedCharacters[i]));
-    // var savedChar = decodeURI(loadedCharacters[i]);
-    // savedCharacterList.appendChild(savedChar);
   }
   
 }
@@ -439,7 +436,6 @@ function loadCharacter() {
 function clearStorage() {
   localStorage.clear();
   savedCharacterList.innerHTML = "<li><div class='collapsible-header'><h2 class='section-header'>Saved Characters</h2></div></li>";
-  // document.getElementById("sv-chars").innerHTML = "";
 }
 
 function saveCharacter1() {
