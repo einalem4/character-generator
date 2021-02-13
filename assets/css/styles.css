@@ -22,7 +22,7 @@ body {
 /* header section */
 main {
     width: 100vw;
-    height: 50vh;
+    margin-top: 20px;
 }
 
 .main-content {
@@ -159,6 +159,10 @@ p strong {
 
 /* media queries */
 @media screen and (min-width: 769px) {
+    body {
+        background-position: center;
+    }
+
     .logo {
         width: 60%;
     }
