@@ -4,8 +4,10 @@
 * [Purpose](#purpose)
 * [Demo](#demo)
 * [Live Website](#website)
+* [Features](#features)
+* [Future Updates](#updates)
 * [Built With](#built)
-* [Contributers](#reflection)
+* [Contributors](#contributors)
 
 ----
 
@@ -15,13 +17,32 @@ A tool to help new Dungeons & Dragons players create characters or help veteran 
 ----
 
 ## Demo <a name="demo"></a>
-![character generator image](assets/images/character-generator.png)
+![character generator gif](assets/images/web-ready/Character-Generator.gif)
 
----
+----
 
-## Live Website <a name="website></a>
-
+## Live Website <a name="website"></a>
 [Character Generator](https://einalem4.github.io/character-generator/)
+
+----
+
+## Features <a name="features"></a>
+* Generate 5 random characters each time "generate" button is clicked
+* Each random character has the following:
+    * Name 
+    * Class & class features
+    * Race & racial features
+    * Image matching the class and race
+* Ability to save charactes
+* Ability to delete saved characters
+
+----
+
+## Future Updates <a name="updates"></a>
+* Add spellcastng information to caster classes
+* Add personality traits
+* Select gender for image & name
+* Delete individual characters from saved list
 
 ----
 
@@ -30,12 +51,13 @@ A tool to help new Dungeons & Dragons players create characters or help veteran 
 * CSS
 * MaterilizeCSS
 * JavaScript
+* Jquery
 * Serp API
 * DnD5e API
 
 ----
 
-## Contributers
+## Contributors <a name="contributors"></a>
 * [Melanie Arnold](https://github.com/einalem4)
 * [Rick Hill](https://github.com/rickhill543)
 * [Ian Jackson](https://github.com/ijacksondesign)
