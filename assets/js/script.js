@@ -12,12 +12,15 @@ var raceList;
 var classList;
 var imgList;
 var characters = [];
+// const mystChar = "./assets/images/web-ready/mystery-character-image.jpg";
+
 
 //pulls random race and class
 function generateCharacter() {
   raceList = [];
   classList = [];
   imgList = [];
+  // $('.collapsible-body .row img').attr("src", mystChar);
   for (var j = 0; j < 5; j++) {
     var counter = 0
     fetch(randomRace)
@@ -141,8 +144,10 @@ function classFeatures(className, counter) {
     })
 }
 
-//checks if race and class list are filled before running the fetch function
-function generateImages() {
+// checks if race and class list are filled before running the fetch function
+function generateImages(uri, options = {}, time = 8000) {
+  var counter = 0;
+
   if (classList.length < 5) {
     return;
   }
@@ -152,6 +157,11 @@ function generateImages() {
 
   //fetch function grabs and places images for their respective class and race
   function imgFetch(j) {
+    const controller = new AbortController()
+    const config = { ...options, signal: controller.signal }
+    const timeout = setTimeout(() => {
+      controller.abort()
+    }, time)
     fetch(
       'https://api.serpstack.com/search' +
       '?access_key=35320024a8400cca6f311123b3fce677' +
@@ -160,17 +170,34 @@ function generateImages() {
       '&query=' +
       raceList[j] +
       '+' +
-      classList[j]
+      classList[j], config
     )
       .then(function (response) {
         return response.json();
       })
       .then(function (response) {
-        var charImg = response.image_results[0].image_url;
+        var charImg = response.image_results[Math.floor(Math.random() * 3)].image_url;
         imgList.push(charImg);
         var charImgEl = document.querySelector("[data-char-img='" + j + "']");
-        charImgEl.setAttribute('src', response.image_results[0].image_url);
+        charImgEl.setAttribute('src', charImg);
         charImgEl.setAttribute('width', '300px');
+      })
+      .catch(function (error) {
+        if (error.name === 'AbortError') {
+          console.log('Fetch call for ' + raceList[j] + ' ' + classList[j] + ' timed out, retrying.')
+          console.log('counter ' + counter);
+        if (counter > 7) {
+            $("[data-char-img='" + j + "']").attr("src", './assets/images/web-ready/missing-image.jpg');
+            return;
+          }
+          for (k=0;k<1;k++) {
+            counter++;
+            console.log('counter after increment ' + counter);
+            imgFetch(j);
+          }
+        } else {
+          console.log(error)
+        }
       })
   }
 }
