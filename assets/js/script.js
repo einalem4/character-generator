@@ -11,8 +11,9 @@ var charList = document.querySelector(".character-results");
 var raceList;
 var classList;
 var imgList;
+var retryList = [0, 0, 0, 0, 0];
 var characters = [];
-// const mystChar = "./assets/images/web-ready/mystery-character-image.jpg";
+const mystChar = "./assets/images/web-ready/mystery-character-image.gif";
 
 
 //pulls random race and class
@@ -20,7 +21,7 @@ function generateCharacter() {
   raceList = [];
   classList = [];
   imgList = [];
-  // $('.collapsible-body .row img').attr("src", mystChar);
+   $('.collapsible-body .row img').attr("src", mystChar);
   for (var j = 0; j < 5; j++) {
     var counter = 0
     fetch(randomRace)
@@ -145,9 +146,7 @@ function classFeatures(className, counter) {
 }
 
 // checks if race and class list are filled before running the fetch function
-function generateImages(uri, options = {}, time = 8000) {
-  var counter = 0;
-
+function generateImages(options = {}, time = 4000) {
   if (classList.length < 5) {
     return;
   }
@@ -157,11 +156,14 @@ function generateImages(uri, options = {}, time = 8000) {
 
   //fetch function grabs and places images for their respective class and race
   function imgFetch(j) {
+    //shims the fetch call with an 8 second timeout function that triggers a unique named error that we can catch
+    //the error is created using the AbortController and signal: controller.signal parameters.
     const controller = new AbortController()
     const config = { ...options, signal: controller.signal }
-    const timeout = setTimeout(() => {
+    setTimeout(() => {
       controller.abort()
     }, time)
+    //runs the series of fetch calls based on j
     fetch(
       'https://api.serpstack.com/search' +
       '?access_key=35320024a8400cca6f311123b3fce677' +
@@ -172,9 +174,11 @@ function generateImages(uri, options = {}, time = 8000) {
       '+' +
       classList[j], config
     )
+    //returns the data in json format
       .then(function (response) {
         return response.json();
       })
+      //grabs a relative and random image to be stored and displayed
       .then(function (response) {
         var charImg = response.image_results[Math.floor(Math.random() * 3)].image_url;
         imgList.push(charImg);
@@ -182,20 +186,18 @@ function generateImages(uri, options = {}, time = 8000) {
         charImgEl.setAttribute('src', charImg);
         charImgEl.setAttribute('width', '300px');
       })
+      //catches both the timeout error and api errors and handles them
       .catch(function (error) {
+        //this is the unique named error, 'AbortError', handled in nested if statements
         if (error.name === 'AbortError') {
-          console.log('Fetch call for ' + raceList[j] + ' ' + classList[j] + ' timed out, retrying.')
-          console.log('counter ' + counter);
-        if (counter > 7) {
+          if (retryList[j] > 1) {
             $("[data-char-img='" + j + "']").attr("src", './assets/images/web-ready/missing-image.jpg');
             return;
           }
-          for (k=0;k<1;k++) {
-            counter++;
-            console.log('counter after increment ' + counter);
+            retryList[j]++;
             imgFetch(j);
-          }
         } else {
+          //handles api errors
           console.log(error)
         }
       })
