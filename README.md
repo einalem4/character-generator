@@ -17,6 +17,7 @@ A tool to help new Dungeons & Dragons players create characters or help veteran 
 ## Demo <a name="demo"></a>
 ![character generator gif](assets/images/web-ready/Character-Generator.gif)
 
+----
 
 ## Live Website <a name="website"></a>
 [Character Generator](https://einalem4.github.io/character-generator/)
@@ -32,6 +33,7 @@ A tool to help new Dungeons & Dragons players create characters or help veteran 
 * Ability to save charactes
 * Ability to delete saved characters
 
+----
 
 ## Future Updates <a name="updates"></a>
 * Add spellcastng information to caster classes
