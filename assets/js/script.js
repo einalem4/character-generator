@@ -146,7 +146,7 @@ function classFeatures(className, counter) {
 }
 
 // checks if race and class list are filled before running the fetch function
-function generateImages(options = {}, time = 4000) {
+function generateImages(options = {}, time = 8000) {
   if (classList.length < 5) {
     return;
   }
