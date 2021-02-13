@@ -185,9 +185,13 @@ p strong {
     }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1024px) {
     p {
-        font-size: 1.4rem;
-        line-height: 2rem;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+    }
+
+    .container {
+        width: 90%;
     }
 }
