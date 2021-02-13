@@ -9,22 +9,18 @@
 * [Built With](#built)
 * [Contributors](#contributors)
 
-----
 
 ## Purpose <a name="purpose"></a>
 A tool to help new Dungeons & Dragons players create characters or help veteran players create a new character quickly.
 
-----
 
 ## Demo <a name="demo"></a>
 ![character generator gif](assets/images/web-ready/Character-Generator.gif)
 
-----
 
 ## Live Website <a name="website"></a>
 [Character Generator](https://einalem4.github.io/character-generator/)
 
-----
 
 ## Features <a name="features"></a>
 * Generate 5 random characters each time "generate" button is clicked
@@ -36,7 +32,6 @@ A tool to help new Dungeons & Dragons players create characters or help veteran 
 * Ability to save charactes
 * Ability to delete saved characters
 
-----
 
 ## Future Updates <a name="updates"></a>
 * Add spellcastng information to caster classes
@@ -44,18 +39,16 @@ A tool to help new Dungeons & Dragons players create characters or help veteran 
 * Select gender for image & name
 * Delete individual characters from saved list
 
-----
 
 ## Built With <a name="built"></a>
 * HTML
 * CSS
 * MaterilizeCSS
 * JavaScript
-* Jquery
+* jQuery
 * Serp API
 * DnD5e API
 
-----
 
 ## Contributors <a name="contributors"></a>
 * [Melanie Arnold](https://github.com/einalem4)
