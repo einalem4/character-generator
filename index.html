@@ -17,7 +17,12 @@
         <div class="main-content valign-wrapper container row">
             <div class="center-align col s12">
                 <img src="./assets/images/logo/character-generator.svg" alt="Character Generator logo" class="logo" />
-                <p class="center-align">Click the button for a random character</p>
+                <p class="center-align">
+                    Are you new to Dungeons & Dragons and need help creating a character?
+                    <br/>
+                    Or are you a veteran player that was just killed by Tiamat and need a new character ASAP?
+                    <br />
+                    Well click the Generate button below and let us create a character for you!</p>
                 <button id="generate" class="waves-effect waves-light btn blue darken-3"><span class="btn-txt">GENERATE CHARACTER</span></button>
                 <div class="saved-char-container">
                     <button id="show-saved-char" class="btn z-depth-0 saved-char-btn">SHOW SAVED CHARACTERS</button>
@@ -318,7 +323,7 @@
         </ul>
     </section>
 
-    <section class="saved-characters container">
+    <section id="sv-chars" class="saved-characters container">
         <ul id="saved-character-list" class="collapsible expandable hide">
             <li>
                 <div class="collapsible-header">

@@ -6,6 +6,7 @@ var generateBtn = document.querySelector('#generate');
 var randomRace = 'https://www.dnd5eapi.co/api/races';
 var randomClass = 'https://www.dnd5eapi.co/api/classes';
 var nameGen = 'https://s3-us-west-2.amazonaws.com/atomicthoughts.com/dnd/dndnames.json';
+var savedCharacterList = document.getElementById("saved-character-list");
 var charList = document.querySelector(".character-results");
 var raceList;
 var classList;
@@ -44,7 +45,7 @@ function generateCharacter() {
             // calls function to get racial features. passes race and counter
             charRaceFeatures(raceName.index, counter);
             counter++
-            generateImages()
+            // generateImages()
           })
       })
   }
@@ -333,7 +334,6 @@ var getRaceProf = function (race, counter) {
 
 var getRaceTraits = function (race, counter) {
   var count = 0;
-  console.log(race.traits);
   if (race.traits.length === 0) {
     var charRaceTrait = document.querySelector("[data-char-race-trait-" + count + "='" + counter + "']");
     charRaceTrait.innerHTML = "<strong>None</strong>";
@@ -344,7 +344,6 @@ var getRaceTraits = function (race, counter) {
 
       fetch(apiRaceUrl).then(function (response) {
         response.json().then(function (traits) {
-          console.log(traits);
           var charRaceTrait = document.querySelector("[data-char-race-trait-" + count + "='" + counter + "']");
           charRaceTrait.innerHTML = "<strong>" + traits.name + ": " + "</strong>" + traits.desc;
           count++
@@ -385,21 +384,33 @@ function saveCharacter(characterNum) {
 
 // loads character and displays it in collapsible
 function loadCharacter() {
+  var saveCharBtn = document.getElementById("show-saved-char");
+
+  if (saveCharBtn.textContent === "SHOW SAVED CHARACTERS") {
+    saveCharBtn.textContent = "HIDE SAVED CHARACTERS";
+    savedCharacterList.classList.remove("hide");
+  }
+  else {
+    saveCharBtn.textContent = "SHOW SAVED CHARACTERS";
+    savedCharacterList.classList.add("hide");
+  } 
+  
   var loadedCharacters = JSON.parse(localStorage.getItem(SAVED_CHARACTER_KEY));
-  var savedCharacterList = document.getElementById("saved-character-list");
-  savedCharacterList.innerHTML = "";
+  savedCharacterList.innerHTML = "<li><div class='collapsible-header'><h2 class='section-header'>Saved Characters</h2></div></li>";
 
   for (var i = 0; i < loadedCharacters.length; i++) {
     savedCharacterList.innerHTML = (savedCharacterList.innerHTML + decodeURI(loadedCharacters[i]));
+    // var savedChar = decodeURI(loadedCharacters[i]);
+    // savedCharacterList.appendChild(savedChar);
   }
-
-  savedCharacterList.classList.remove("hide");
+  
 }
 
 // clears local storage and removes displayed saved characters
 function clearStorage() {
   localStorage.clear();
-  document.getElementById("sv-chars").innerHTML = "";
+  savedCharacterList.innerHTML = "<li><div class='collapsible-header'><h2 class='section-header'>Saved Characters</h2></div></li>";
+  // document.getElementById("sv-chars").innerHTML = "";
 }
 
 function saveCharacter1() {
