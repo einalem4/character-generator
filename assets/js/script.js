@@ -102,7 +102,7 @@ function classFeatures(className, counter) {
 
       //calls skill proficiency
       var proficSkill = document.querySelector("[data-char-class-skill-prof='" + counter + "']")
-      proficSkill.innerHTML = "<strong>Skill Proficiences: </strong>"
+      proficSkill.innerHTML = "<strong>Skill Proficiencies: </strong>"
       for (var j = 0; j < classDetails.proficiency_choices.length; j++) {
         for (var k = 0; k < classDetails.proficiency_choices[j].choose; k++) {
           var randomProf = classDetails.proficiency_choices[0].from[Math.floor(Math.random() * classDetails.proficiency_choices[j].from.length)].name;
@@ -115,7 +115,7 @@ function classFeatures(className, counter) {
       }
       //calls weapon & armor proficiences
       var wepAndArmor = document.querySelector("[data-char-class-weap-prof='" + counter + "']")
-      wepAndArmor.innerHTML = "<strong>Weapon & Armor Proficiences: </strong>"
+      wepAndArmor.innerHTML = "<strong>Weapon & Armor Proficiencies: </strong>"
       for (var j = 0; j < classDetails.proficiencies.length; j++) {
         var wepArmEl = classDetails.proficiencies[j].name
         var wepEl = document.createElement('p');
@@ -123,19 +123,13 @@ function classFeatures(className, counter) {
         wepEl.textContent = wepArmEl + " ";
         wepAndArmor.appendChild(wepEl);
       }
-      //fetch starter equipment
-      return fetch('https://www.dnd5eapi.co/api/starting-equipment/' + className.index)
-    })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (starterEquip) {
-      //starting equipment
+
+      //calls starting equipment
       var equip = document.querySelector("[data-char-equip='" + counter + "']")
       equip.innerHTML = "<h4>Starting Equipment</h4>"
-      for (var j = 0; j < starterEquip.starting_equipment.length; j++) {
-        var equipEl = starterEquip.starting_equipment[j].equipment.name
-        var amount = starterEquip.starting_equipment[j].quantity
+      for (var j = 0; j < classDetails.starting_equipment.length; j++) {
+        var equipEl = classDetails.starting_equipment[j].equipment.name
+        var amount = classDetails.starting_equipment[j].quantity
         var starterEl = document.createElement('p');
         starterEl.classList = "equipment"
         starterEl.textContent = equipEl + " (" + amount + ")"
@@ -269,9 +263,9 @@ var getRaceProf = function (race, counter) {
   var charToolProf = document.querySelector("[data-char-race-tool-prof='" + counter + "']");
   var charLanguageEl = document.querySelector("[data-char-race-lang='" + counter + "']");
 
-  charSkillProf.innerHTML = "<strong>Skill Proficiences: </strong>" + "-";
-  charWeapProf.innerHTML = "<strong>Weapon & Armor Proficiences: </strong>" + "-";
-  charToolProf.innerHTML = "<strong>Tool Proficiences: </strong>" + "-";
+  charSkillProf.innerHTML = "<strong>Skill Proficiencies: </strong>" + "-";
+  charWeapProf.innerHTML = "<strong>Weapon & Armor Proficiencies: </strong>" + "-";
+  charToolProf.innerHTML = "<strong>Tool Proficiencies: </strong>" + "-";
   charLanguageEl.innerHTML = "<strong>Languages: </strong>";
 
   for (var i = 0; i < race.languages.length; i++) {
@@ -284,7 +278,7 @@ var getRaceProf = function (race, counter) {
 
   if (race.index === "dwarf") {
     // dwarf weapon proficiences
-    charWeapProf.innerHTML = "<strong>Weapon & Armor Proficiences: </strong>";
+    charWeapProf.innerHTML = "<strong>Weapon & Armor Proficiencies: </strong>";
     for (var i = 0; i < race.starting_proficiencies.length; i++) {
       var prof = race.starting_proficiencies[i].name;
       var profEl = document.createElement('p');
@@ -294,7 +288,7 @@ var getRaceProf = function (race, counter) {
     }
 
     // dwarf tool proficiences
-    charToolProf.innerHTML = "<strong>Tool Proficiences: </strong>";
+    charToolProf.innerHTML = "<strong>Tool Proficiencies: </strong>";
     for (var i = 0; i < race.starting_proficiency_options.choose; i++) {
       var prof = race.starting_proficiency_options.from[Math.floor(Math.random() * race.starting_proficiency_options.from.length)].name;
       var profEl = document.createElement('p');
@@ -306,7 +300,7 @@ var getRaceProf = function (race, counter) {
 
   else if (race.index === "elf") {
     // elf skill proficiences
-    charSkillProf.innerHTML = "<strong>Skill Proficiences: </strong>";
+    charSkillProf.innerHTML = "<strong>Skill Proficiencies: </strong>";
     var prof = race.starting_proficiencies[0].name;
     prof = prof.split(":");
     var profEl = document.createElement('p');
@@ -317,7 +311,7 @@ var getRaceProf = function (race, counter) {
 
   else if (race.index === "half-elf") {
     // half-elf skill proficiences
-    charSkillProf.innerHTML = "<strong>Skill Proficiences: </strong>";
+    charSkillProf.innerHTML = "<strong>Skill Proficiencies: </strong>";
     for (var i = 0; i < race.starting_proficiency_options.choose; i++) {
       var prof = race.starting_proficiency_options.from[Math.floor(Math.random() * race.starting_proficiency_options.from.length)].name;
       prof = prof.split(":");
@@ -339,7 +333,7 @@ var getRaceProf = function (race, counter) {
 
   else if (race.index === "half-orc") {
     // half-orc skill proficiences
-    charSkillProf.innerHTML = "<strong>Skill Proficiences: </strong>";
+    charSkillProf.innerHTML = "<strong>Skill Proficiencies: </strong>";
     var prof = race.starting_proficiencies[0].name;
     prof = prof.split(":");
     var profEl = document.createElement('p');
