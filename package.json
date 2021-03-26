@@ -1,0 +1,19 @@
+{
+  "name": "character-generator",
+  "version": "1.0.0",
+  "description": "## Table of Contents * [Purpose](#purpose) * [Demo](#demo) * [Live Website](#website) * [Features](#features) * [Future Updates](#updates) * [Built With](#built) * [Contributors](#contributors)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/einalem4/character-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/einalem4/character-generator/issues"
+  },
+  "homepage": "https://github.com/einalem4/character-generator#readme"
+}
