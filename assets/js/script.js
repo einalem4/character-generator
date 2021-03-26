@@ -20,7 +20,7 @@ function generateCharacter() {
   raceList = [];
   classList = [];
   imgList = [];
-   $('.collapsible-body .row img').attr("src", mystChar);
+  $('.collapsible-body .row img').attr("src", mystChar);
   for (var j = 0; j < 5; j++) {
     var counter = 0
     fetch(randomRace)
@@ -159,7 +159,7 @@ function generateImages(options = {}, time = 8000) {
     //runs the series of fetch calls based on j
     fetch(
       'https://api.serpstack.com/search' +
-      '?access_key=35320024a8400cca6f311123b3fce677' +
+      '?access_key=4a1c18cc2e8e16d21040976f12ad1246' +
       '&type=images' +
       '&num=5' +
       '&query=' +
@@ -167,7 +167,7 @@ function generateImages(options = {}, time = 8000) {
       '+' +
       classList[j], config
     )
-    //returns the data in json format
+      //returns the data in json format
       .then(function (response) {
         return response.json();
       })
@@ -187,8 +187,8 @@ function generateImages(options = {}, time = 8000) {
             $("[data-char-img='" + j + "']").attr("src", './assets/images/web-ready/missing-image.jpg');
             return;
           }
-            retryList[j]++;
-            imgFetch(j);
+          retryList[j]++;
+          imgFetch(j);
         } else {
           //handles api errors
           console.log(error)
@@ -415,15 +415,15 @@ function loadCharacter() {
   else {
     saveCharBtn.textContent = "SHOW SAVED CHARACTERS";
     savedCharacterList.classList.add("hide");
-  } 
-  
+  }
+
   var loadedCharacters = JSON.parse(localStorage.getItem(SAVED_CHARACTER_KEY));
   savedCharacterList.innerHTML = "<li><div class='collapsible-header'><h2 class='section-header'>Saved Characters</h2></div></li>";
 
   for (var i = 0; i < loadedCharacters.length; i++) {
     savedCharacterList.innerHTML = (savedCharacterList.innerHTML + decodeURI(loadedCharacters[i]));
   }
-  
+
 }
 
 // clears local storage and removes displayed saved characters
