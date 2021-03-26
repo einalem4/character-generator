@@ -159,6 +159,7 @@ function generateImages(options = {}, time = 8000) {
     //runs the series of fetch calls based on j
     fetch(
       'http://api.serpstack.com/search' +
+      '?access_key=4a1c18cc2e8e16d21040976f12ad1246' +
       '&type=images' +
       '&num=5' +
       '&query=' +
